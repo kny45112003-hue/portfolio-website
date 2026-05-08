@@ -393,3 +393,26 @@ function updateActiveNav() {
 
 window.addEventListener("scroll", updateActiveNav, { passive: true });
 updateActiveNav();
+
+// ── SNS 카드 클릭 → 큰 커버로 전환 ──
+function switchSnsCard(card, imgSrc, title, sub) {
+  // 커버 이미지 교체
+  const coverImg = document.getElementById("player-cover-img");
+  if (coverImg) coverImg.src = imgSrc;
+
+  // 제목/부제목 교체
+  const playerTitle = document.getElementById("player-title");
+  const playerSub = document.getElementById("player-sub");
+  if (playerTitle) playerTitle.textContent = title;
+  if (playerSub) playerSub.textContent = sub;
+
+  // 커버 상단 텍스트 교체
+  const coverSub = document.getElementById("player-cover-sub");
+  if (coverSub) coverSub.textContent = title + " · " + sub;
+
+  // 선택된 카드 표시
+  document
+    .querySelectorAll(".sns-small-card")
+    .forEach((c) => c.classList.remove("selected"));
+  card.classList.add("selected");
+}

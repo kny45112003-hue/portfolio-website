@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>한식진흥원 — Kim Na Yeon</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --black: #0a0a0a;
+        --white: #ffffff;
+        --red: #ff0000;
+        --cream: #fff7e9;
+        --gold: #c6a76e;
+        --navy: #1f2a44;
+        --wine: #8b2e2e;
+        --dark: #1c1c1c;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--black);
+        color: var(--white);
+        font-family: "Pretendard", sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* NAV */
+      #yt-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: var(--black);
+        border-bottom: 1px solid #1a1a1a;
+        display: flex;
+        align-items: center;
+        padding: 0 48px;
+        gap: 24px;
+        z-index: 100;
+      }
+
+      .yt-logo {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        text-decoration: none;
+      }
+
+      .yt-logo-icon {
+        width: 52px;
+        height: 37px;
+        background: var(--red);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .yt-logo-icon::after {
+        content: "";
+        border-left: 17px solid white;
+        border-top: 11px solid transparent;
+        border-bottom: 11px solid transparent;
+        margin-left: 3px;
+      }
+
+      .yt-logo-text {
+        color: var(--white);
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 48px;
+        letter-spacing: 1px;
+      }
+
+      .back-btn {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #888;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.2s;
+      }
+
+      .back-btn:hover {
+        color: var(--white);
+      }
+
+      /* HERO */
+      #detail-hero {
+        padding-top: 100px;
+        min-height: 100vh;
+        background: var(--navy);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-bottom: 80px;
+        padding-left: 80px;
+        padding-right: 80px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #detail-hero::before {
+        content: "韓";
+        position: absolute;
+        top: 50%;
+        right: 80px;
+        transform: translateY(-50%);
+        font-size: 400px;
+        color: rgba(198, 167, 110, 0.08);
+        font-family: serif;
+        line-height: 1;
+        pointer-events: none;
+      }
+
+      .hero-tag {
+        font-size: 13px;
+        color: var(--gold);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+      }
+
+      .hero-title {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: clamp(60px, 10vw, 120px);
+        font-weight: 900;
+        line-height: 1;
+        color: var(--cream);
+        letter-spacing: -2px;
+        margin-bottom: 32px;
+      }
+
+      .hero-title span {
+        color: var(--gold);
+      }
+
+      .hero-desc {
+        font-size: 18px;
+        color: rgba(255, 247, 233, 0.6);
+        max-width: 600px;
+        line-height: 1.8;
+        margin-bottom: 48px;
+      }
+
+      .hero-meta {
+        display: flex;
+        gap: 40px;
+      }
+
+      .hero-meta-item {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .hero-meta-label {
+        font-size: 11px;
+        color: var(--gold);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .hero-meta-value {
+        font-size: 16px;
+        color: var(--cream);
+        font-weight: 500;
+      }
+
+      /* SECTIONS */
+      .section {
+        padding: 120px 80px;
+        border-top: 1px solid #1a1a1a;
+      }
+
+      .section-num {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 13px;
+        color: var(--gold);
+        letter-spacing: 0.2em;
+        margin-bottom: 16px;
+      }
+
+      .section-title {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: clamp(40px, 6vw, 80px);
+        font-weight: 900;
+        color: var(--white);
+        line-height: 1;
+        letter-spacing: -1px;
+        margin-bottom: 60px;
+      }
+
+      /* OVERVIEW */
+      #overview {
+        background: var(--black);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .overview-text p {
+        font-size: 18px;
+        color: #aaa;
+        line-height: 1.9;
+      }
+
+      .overview-text p strong {
+        color: var(--cream);
+        font-weight: 500;
+      }
+
+      .overview-keywords {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .keyword-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 24px 0;
+        border-bottom: 1px solid #1a1a1a;
+      }
+
+      .keyword-en {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 48px;
+        font-weight: 900;
+        color: var(--gold);
+        width: 180px;
+        flex-shrink: 0;
+      }
+
+      .keyword-kr {
+        font-size: 14px;
+        color: #888;
+        letter-spacing: 0.05em;
+      }
+
+      /* STYLE GUIDE */
+      #styleguide {
+        background: var(--dark);
+      }
+
+      .color-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+        margin-bottom: 60px;
+      }
+
+      .color-chip {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .color-swatch {
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .color-hex {
+        font-size: 12px;
+        color: #888;
+        font-family: monospace;
+        letter-spacing: 0.05em;
+      }
+
+      .color-name {
+        font-size: 13px;
+        color: var(--cream);
+        font-weight: 500;
+      }
+
+      .font-showcase {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .font-item {
+        padding: 40px;
+        border: 1px solid #2a2a2a;
+        border-radius: 16px;
+      }
+
+      .font-label {
+        font-size: 11px;
+        color: var(--gold);
+        letter-spacing: 0.15em;
+        margin-bottom: 16px;
+      }
+
+      .font-sample-myungjo {
+        font-family: "Noto Serif KR", serif;
+        font-size: 28px;
+        color: var(--cream);
+        line-height: 1.6;
+      }
+
+      .font-sample-gothic {
+        font-family: "Pretendard", sans-serif;
+        font-size: 28px;
+        font-weight: 300;
+        color: var(--cream);
+        line-height: 1.6;
+      }
+
+      /* PROJECT GOAL */
+      #goal {
+        background: var(--navy);
+      }
+
+      .goal-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .goal-item {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        gap: 40px;
+        padding: 48px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        align-items: start;
+      }
+
+      .goal-num {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 64px;
+        font-weight: 900;
+        color: rgba(198, 167, 110, 0.3);
+        line-height: 1;
+      }
+
+      .goal-content h3 {
+        font-size: 22px;
+        color: var(--cream);
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      .goal-content p {
+        font-size: 16px;
+        color: rgba(255, 247, 233, 0.5);
+        line-height: 1.8;
+      }
+
+      /* PERSONA */
+      #persona {
+        background: var(--black);
+      }
+
+      .persona-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .persona-card {
+        padding: 48px;
+        border: 1px solid #2a2a2a;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .persona-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gold);
+      }
+
+      .persona-age {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 80px;
+        font-weight: 900;
+        color: rgba(198, 167, 110, 0.15);
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        line-height: 1;
+      }
+
+      .persona-name {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 32px;
+        font-weight: 900;
+        color: var(--cream);
+        margin-bottom: 8px;
+      }
+
+      .persona-role {
+        font-size: 13px;
+        color: var(--gold);
+        letter-spacing: 0.1em;
+        margin-bottom: 32px;
+      }
+
+      .persona-section {
+        margin-bottom: 20px;
+      }
+
+      .persona-label {
+        font-size: 11px;
+        color: var(--gold);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .persona-text {
+        font-size: 14px;
+        color: #aaa;
+        line-height: 1.7;
+      }
+
+      /* WIREFRAME / OUTPUT */
+      #output {
+        background: var(--cream);
+      }
+
+      #output .section-title {
+        color: var(--dark);
+      }
+
+      #output .section-num {
+        color: var(--wine);
+      }
+
+      .output-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .output-img {
+        border-radius: 12px;
+        overflow: hidden;
+        background: #ddd;
+        aspect-ratio: 9/16;
+      }
+
+      .output-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .output-img.dummy {
+        background: linear-gradient(135deg, #e8d5b5, #c6a76e30);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #c6a76e;
+        font-size: 13px;
+        letter-spacing: 0.1em;
+      }
+
+      /* FOOTER */
+      #detail-footer {
+        padding: 80px;
+        background: var(--dark);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #2a2a2a;
+      }
+
+      .footer-left h2 {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-size: 48px;
+        color: var(--cream);
+        font-weight: 900;
+        margin-bottom: 8px;
+      }
+
+      .footer-left p {
+        font-size: 14px;
+        color: #888;
+      }
+
+      .footer-right a {
+        display: inline-block;
+        padding: 16px 40px;
+        background: var(--gold);
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.1em;
+        border-radius: 40px;
+        transition: background 0.2s;
+      }
+
+      .footer-right a:hover {
+        background: var(--cream);
+      }
+
+      /* ANIMATE */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav id="yt-nav">
+      <a href="index.html" class="yt-logo">
+        <div class="yt-logo-icon"></div>
+        <span class="yt-logo-text">KimNayeon</span>
+      </a>
+      <a href="index.html" class="back-btn">← 포트폴리오로 돌아가기</a>
+    </nav>
+
+    <!-- HERO -->
+    <section id="detail-hero">
+      <div class="hero-tag fade-up">Website Redesign · 2026 · Team Project</div>
+      <h1 class="hero-title fade-up">
+        Korean<br />Food<br /><span>Institute</span>
+      </h1>
+      <p class="hero-desc fade-up">
+        전통적인 한국의 미(美)를 현대적인 감각으로 재해석하여, 신뢰감 있는
+        공공기관의 이미지와 역동적인 한식 문화의 느낌이 나도록 리디자인했습니다.
+      </p>
+      <div class="hero-meta fade-up">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Type</span>
+          <span class="hero-meta-value">Website Redesign</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Role</span>
+          <span class="hero-meta-value">UX/UI Design</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Year</span>
+          <span class="hero-meta-value">2026</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Team</span>
+          <span class="hero-meta-value">Team Project</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="section" id="overview">
+      <div class="overview-text fade-up">
+        <div class="section-num">01 — Overview</div>
+        <h2 class="section-title">Concept<br />Visual</h2>
+        <p>
+          한식진흥원의 정체성인 <strong>전통성</strong>과
+          <strong>세계화</strong>를 동시에 담아내는 디자인을 목표로 했습니다.<br /><br />단순히
+          정보를 나열하는 것이 아니라, 공공기관 특유의 <strong>신뢰감</strong>을
+          유지하면서도 한식의 역동성과 풍요로움을 시각적으로 전달하고자
+          했습니다.
+        </p>
+      </div>
+      <div class="overview-keywords fade-up">
+        <div class="keyword-item">
+          <span class="keyword-en">Global</span>
+          <span class="keyword-kr">세계화 — 글로벌 한식 문화 확산</span>
+        </div>
+        <div class="keyword-item">
+          <span class="keyword-en">Heritage</span>
+          <span class="keyword-kr">전통성 — 한국 고유의 음식 문화</span>
+        </div>
+        <div class="keyword-item">
+          <span class="keyword-en">Archive</span>
+          <span class="keyword-kr">정보 — 체계적인 데이터 아카이빙</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STYLE GUIDE -->
+    <section class="section" id="styleguide">
+      <div class="section-num fade-up">02 — Style Guide</div>
+      <h2 class="section-title fade-up">Color &<br />Typography</h2>
+      <div class="color-grid fade-up">
+        <div class="color-chip">
+          <div class="color-swatch" style="background: #1c1c1c"></div>
+          <div class="color-name">Dark</div>
+          <div class="color-hex">#1C1C1C</div>
+        </div>
+        <div class="color-chip">
+          <div
+            class="color-swatch"
+            style="background: #fff7e9; border-color: #ddd"
+          ></div>
+          <div class="color-name">Cream</div>
+          <div class="color-hex">#FFF7E9</div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background: #c6a76e"></div>
+          <div class="color-name">Gold</div>
+          <div class="color-hex">#C6A76E</div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background: #1f2a44"></div>
+          <div class="color-name">Navy</div>
+          <div class="color-hex">#1F2A44</div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background: #8b2e2e"></div>
+          <div class="color-name">Wine</div>
+          <div class="color-hex">#8B2E2E</div>
+        </div>
+      </div>
+      <div class="font-showcase fade-up">
+        <div class="font-item">
+          <div class="font-label">Main Typeface — 나눔명조</div>
+          <div class="font-sample-myungjo">
+            한국의 맛,<br />시간을 담아내다.
+          </div>
+        </div>
+        <div class="font-item">
+          <div class="font-label">Sub Typeface — 에스코어드림</div>
+          <div class="font-sample-gothic">깊고 진한<br />양념의 풍미</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT GOAL -->
+    <section class="section" id="goal">
+      <div class="section-num fade-up">03 — Project Goal</div>
+      <h2 class="section-title fade-up">Design<br />Direction</h2>
+      <div class="goal-list">
+        <div class="goal-item fade-up">
+          <div class="goal-num">01</div>
+          <div class="goal-content">
+            <h3>정돈된 레이아웃과 넓은 여백</h3>
+            <p>
+              현대적이고 깔끔한 공공기관의 이미지를 구축합니다. 불필요한 요소를
+              제거하고 핵심에 집중할 수 있는 구조를 설계했습니다.
+            </p>
+          </div>
+        </div>
+        <div class="goal-item fade-up">
+          <div class="goal-num">02</div>
+          <div class="goal-content">
+            <h3>정보 접근성 극대화</h3>
+            <p>
+              핵심 사업 내용을 번호를 매겨 나열하거나 아이콘을 활용하여 사용자가
+              원하는 정보를 빠르게 찾을 수 있도록 설계했습니다.
+            </p>
+          </div>
+        </div>
+        <div class="goal-item fade-up">
+          <div class="goal-num">03</div>
+          <div class="goal-content">
+            <h3>직관적인 메뉴 구조</h3>
+            <p>
+              사업 소개, 한식 자료, 체험 프로그램 등 주요 메뉴를 시각적으로
+              분리하여 사용자 편의성을 높였습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERSONA -->
+    <section class="section" id="persona">
+      <div class="section-num fade-up">04 — Persona</div>
+      <h2 class="section-title fade-up">Target<br />User</h2>
+      <div class="persona-grid fade-up">
+        <div class="persona-card">
+          <div class="persona-age">45</div>
+          <div class="persona-name">박성민</div>
+          <div class="persona-role">귀촌 후 향토음식 창업 준비 중인 중년</div>
+          <div class="persona-section">
+            <div class="persona-label">목적</div>
+            <div class="persona-text">
+              향토음식 진흥센터 및 한식 문화공간 운영 정보를 찾기 위해 방문.
+              향토음식 진흥센터의 역할과 위치, 현주소를 궁금해함.
+            </div>
+          </div>
+          <div class="persona-section">
+            <div class="persona-label">니즈</div>
+            <div class="persona-text">
+              향토 음식 자원화, 교육 및 인력 양성 내용
+            </div>
+          </div>
+        </div>
+        <div class="persona-card">
+          <div class="persona-age">18</div>
+          <div class="persona-name">이수아</div>
+          <div class="persona-role">요리에 관심이 많은 고등학생</div>
+          <div class="persona-section">
+            <div class="persona-label">목적</div>
+            <div class="persona-text">
+              요리와 관련된 정보를 찾다가 우연히 한식진흥원에 대해 알게 되었고,
+              처음 들어보는 공공기관에 호기심이 생겨 방문.
+            </div>
+          </div>
+          <div class="persona-section">
+            <div class="persona-label">니즈</div>
+            <div class="persona-text">한식진흥원의 존재성, 역할, 사업 내용</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUTPUT -->
+    <section class="section" id="output">
+      <div class="section-num fade-up">05 — Output</div>
+      <h2 class="section-title fade-up">Result</h2>
+      <div class="output-grid fade-up">
+        <div class="output-img dummy">이미지 준비 중</div>
+        <div class="output-img dummy">이미지 준비 중</div>
+        <div class="output-img dummy">이미지 준비 중</div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="detail-footer">
+      <div class="footer-left">
+        <h2>한식진흥원</h2>
+        <p>Website Redesign · 2026</p>
+      </div>
+      <div class="footer-right">
+        <a href="index.html">← 포트폴리오로</a>
+      </div>
+    </footer>
+
+    <script>
+      // 스크롤 애니메이션
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      document
+        .querySelectorAll(".fade-up")
+        .forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

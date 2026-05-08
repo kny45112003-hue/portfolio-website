@@ -1454,3 +1454,20 @@ body {
 .yt-nav-links a {
   border-radius: 16px !important;
 }
+
+/* SNS 카드 선택 상태 */
+.sns-small-card {
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  overflow: hidden;
+}
+
+.sns-small-card:hover {
+  transform: scale(1.03);
+}
+
+.sns-small-card.selected {
+  box-shadow: 0 0 0 3px var(--red);
+}
