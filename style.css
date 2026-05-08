@@ -1119,3 +1119,338 @@ body {
   font-weight: 700;
   color: var(--white);
 }
+
+/* 설명 패널 fixed로 오른쪽 고정 */
+#shorts-panel {
+  position: fixed !important;
+  top: 100px !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 500px !important;
+  height: calc(100vh - 100px) !important;
+  background: #111 !important;
+  border-left: 1px solid #222 !important;
+  padding: 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  z-index: 999 !important;
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease !important;
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+}
+
+#shorts-panel.hidden {
+  transform: translateX(100%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* ── SNS 디자인 섹션 ── */
+#section-sns {
+  background: var(--black);
+}
+
+#sns-main {
+  display: flex;
+  gap: 40px;
+  padding: 24px 48px;
+  align-items: flex-start;
+  height: calc(100vh - 160px);
+  overflow: hidden;
+  position: relative;
+}
+
+#sns-player {
+  width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#player-cover {
+  width: 300px;
+  height: 300px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  display: block;
+}
+
+#player-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+#player-cover-info {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+}
+#player-cover-title {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+}
+#player-cover-sub {
+  font-size: 12px;
+  color: white;
+  font-weight: 600;
+}
+
+#player-play-btn {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: black;
+  cursor: pointer;
+  z-index: 2;
+}
+
+#player-title {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-size: 24px;
+  color: white;
+  font-weight: 700;
+}
+#player-sub {
+  font-size: 14px;
+  color: #888;
+}
+#player-progress {
+  width: 100%;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  overflow: hidden;
+}
+#player-bar {
+  width: 40%;
+  height: 100%;
+  background: white;
+}
+#player-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ctrl-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 18px;
+  cursor: pointer;
+}
+.ctrl-btn:hover {
+  color: white;
+}
+.ctrl-play {
+  color: white;
+  font-size: 28px;
+}
+
+#sns-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+#sns-card-list {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+
+.sns-small-card {
+  width: 200px;
+  height: 200px;
+  border-radius: 12px;
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.sns-card-label {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  font-size: 13px;
+  color: white;
+  line-height: 1.4;
+}
+.sns-card-label span {
+  font-size: 11px;
+  color: #888;
+}
+
+#sns-circle-wrap {
+  position: absolute;
+  bottom: -200px;
+  right: -200px;
+  width: 726px;
+  height: 726px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.circle-ring {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.circle-ring svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+@keyframes rotate-circle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 카드 322px로 수정 */
+.sns-small-card {
+  width: 322px !important;
+  height: 322px !important;
+}
+
+/* 원형 텍스트 sns 섹션 안으로 */
+#sns-circle-wrap {
+  position: absolute !important;
+  bottom: -150px !important;
+  right: -150px !important;
+}
+
+/* 플레이어 커버 크게 */
+#sns-player {
+  width: 380px !important;
+}
+
+#player-cover {
+  width: 380px !important;
+  height: 380px !important;
+}
+
+/* 원형 텍스트 카드 뒤로 */
+#sns-circle-wrap {
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+#sns-card-list {
+  z-index: 1 !important;
+  position: relative !important;
+}
+
+/* sns-right overflow hidden으로 원형 텍스트 카드 침범 방지 */
+#sns-right {
+  overflow: hidden !important;
+}
+
+/* 원형 텍스트 위치 최종 */
+#sns-right {
+  overflow: visible !important;
+}
+
+#sns-circle-wrap {
+  position: absolute !important;
+  bottom: -300px !important;
+  right: -300px !important;
+  z-index: 3 !important;
+  width: 726px !important;
+  height: 726px !important;
+}
+
+#sns-card-list {
+  z-index: 2 !important;
+  position: relative !important;
+}
+
+/* 원형 텍스트 sns-main 기준 오른쪽 하단 */
+#sns-main {
+  position: relative !important;
+}
+
+#sns-circle-wrap {
+  position: absolute !important;
+  bottom: -300px !important;
+  right: -300px !important;
+  width: 726px !important;
+  height: 726px !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  animation: none !important;
+}
+
+/* 원형 텍스트 최종 위치 */
+#sns-main {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+#sns-right {
+  overflow: visible !important;
+  position: relative !important;
+}
+
+#sns-circle-wrap {
+  position: absolute !important;
+  bottom: -300px !important;
+  right: -300px !important;
+  width: 726px !important;
+  height: 726px !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  animation: none !important;
+}
+
+/* 원형 텍스트 fixed - sns 섹션 밖 overflow 무시 */
+#sns-circle-wrap {
+  position: fixed !important;
+  bottom: -300px !important;
+  right: -300px !important;
+  width: 726px !important;
+  height: 726px !important;
+  z-index: 50 !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+#sns-circle-wrap.visible {
+  opacity: 1 !important;
+}
+
+/* 네비 버튼 크기 축소 */
+.yt-nav-links a {
+  font-size: 24px !important;
+  padding: 12px 20px !important;
+}
+
+/* 네비 버튼 라운드 16px */
+.yt-nav-links a {
+  border-radius: 16px !important;
+}

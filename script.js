@@ -291,7 +291,11 @@ if (shortsList && originalShorts.length) {
         e.stopPropagation();
         moveShorts(i - shortsIndex);
       } else {
-        openShorts(i % total);
+        const panel = document.getElementById("shorts-panel");
+        if (panel) {
+          panel.classList.remove("hidden");
+          console.log("panel opened");
+        }
       }
     });
   });
@@ -342,3 +346,50 @@ if (shortsList && originalShorts.length) {
   window.addEventListener("resize", () => updateShorts(false));
   setTimeout(() => updateShorts(false), 100);
 }
+
+// ── 원형 텍스트 SNS 섹션에서만 보이기 ──
+const snsSection = document.getElementById("section-sns");
+const circleWrap = document.getElementById("sns-circle-wrap");
+
+if (snsSection && circleWrap) {
+  window.addEventListener(
+    "scroll",
+    () => {
+      const rect = snsSection.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        circleWrap.classList.add("visible");
+      } else {
+        circleWrap.classList.remove("visible");
+      }
+    },
+    { passive: true },
+  );
+}
+
+// ── 스크롤 위치에 따라 네비 자동 활성화 ──
+const sections = [
+  { id: "hero", target: "hero" },
+  { id: "section-profile", target: "section-profile" },
+  { id: "section-service", target: "section-service" },
+  { id: "section-detail", target: "section-detail" },
+  { id: "section-sns", target: "section-sns" },
+  { id: "section-brand", target: "section-brand" },
+];
+
+function updateActiveNav() {
+  let current = "hero";
+  sections.forEach(({ id }) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= 150) current = id;
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.toggle("active", link.dataset.target === current);
+  });
+}
+
+window.addEventListener("scroll", updateActiveNav, { passive: true });
+updateActiveNav();
