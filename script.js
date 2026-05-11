@@ -109,7 +109,6 @@ const originalCards = Array.from(document.querySelectorAll(".carousel-card"));
 if (track && originalCards.length) {
   const total = originalCards.length;
 
-  // 앞뒤로 카드 복제
   originalCards.forEach((card) => {
     const clone = card.cloneNode(true);
     clone.classList.add("clone");
@@ -122,7 +121,7 @@ if (track && originalCards.length) {
   });
 
   const allCards = Array.from(track.querySelectorAll(".carousel-card"));
-  let currentIndex = total; // 복제 뒤 실제 첫 카드
+  let currentIndex = total;
   let dragStartX = null;
   let isDragging = false;
   let isTransitioning = false;
@@ -147,7 +146,6 @@ if (track && originalCards.length) {
     updateCarousel(true);
 
     setTimeout(() => {
-      // 루프 점프
       if (currentIndex >= total * 2) {
         currentIndex = total;
         updateCarousel(false);
@@ -171,7 +169,6 @@ if (track && originalCards.length) {
     });
   });
 
-  // 드래그
   track.addEventListener("mousedown", (e) => {
     dragStartX = e.clientX;
     isDragging = false;
@@ -193,7 +190,6 @@ if (track && originalCards.length) {
     }, 0);
   });
 
-  // 휠
   const carouselWrap = document.querySelector(".carousel-wrap");
   if (carouselWrap) {
     let wheelTimer = null;
@@ -233,7 +229,6 @@ const originalShorts = Array.from(document.querySelectorAll(".shorts-card"));
 if (shortsList && originalShorts.length) {
   const total = originalShorts.length;
 
-  // 앞뒤 복제
   originalShorts.forEach((card) => {
     const clone = card.cloneNode(true);
     clone.classList.add("clone");
@@ -282,7 +277,7 @@ if (shortsList && originalShorts.length) {
     }, 520);
   }
 
-  // 클릭
+  // 클릭 — 패널에 데이터 채우기
   allShorts.forEach((card, i) => {
     card.addEventListener("click", (e) => {
       if (shortsIsDragging) return;
@@ -291,16 +286,63 @@ if (shortsList && originalShorts.length) {
         e.stopPropagation();
         moveShorts(i - shortsIndex);
       } else {
-        const panel = document.getElementById("shorts-panel");
-        if (panel) {
-          panel.classList.remove("hidden");
-          console.log("panel opened");
+        // 원본 카드의 data 가져오기 (clone도 동일 data 가짐)
+        const title = card.dataset.title || "—";
+        const period = card.dataset.period || "—";
+        const tools = card.dataset.tools || "—";
+        const desc = card.dataset.desc || "—";
+        const link = card.dataset.link || "#";
+
+        // 툴 아이콘 매핑
+        const toolIconMap = {
+          Photoshop:
+            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg",
+          Illustrator:
+            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg",
+          Figma:
+            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+          HTML: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+          CSS: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+          JavaScript:
+            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+        };
+
+        const panelProject = document.getElementById("panel-project");
+        const panelPeriod = document.getElementById("panel-period-val");
+        const panelToolsBox = document.getElementById("panel-tools-icons");
+        const panelDesc = document.getElementById("panel-desc");
+        const panelLink = document.getElementById("panel-link");
+
+        if (panelProject) panelProject.textContent = title;
+        if (panelPeriod) panelPeriod.textContent = period;
+        if (panelDesc) panelDesc.textContent = desc;
+        if (panelLink) panelLink.href = link;
+
+        // 툴 아이콘 렌더링
+        if (panelToolsBox) {
+          panelToolsBox.innerHTML = "";
+          tools
+            .split("·")
+            .map((t) => t.trim())
+            .forEach((tool) => {
+              const src = toolIconMap[tool];
+              if (src) {
+                const img = document.createElement("img");
+                img.src = src;
+                img.alt = tool;
+                img.title = tool;
+                img.style.cssText = "width:28px; height:28px;";
+                panelToolsBox.appendChild(img);
+              }
+            });
         }
+
+        const panel = document.getElementById("shorts-panel");
+        if (panel) panel.classList.remove("hidden");
       }
     });
   });
 
-  // 드래그
   shortsList.addEventListener("mousedown", (e) => {
     shortsDragStart = e.clientX;
     shortsIsDragging = false;
@@ -322,7 +364,6 @@ if (shortsList && originalShorts.length) {
     }, 0);
   });
 
-  // 휠 — 끝에 도달하면 페이지 스크롤
   const detailSticky = document.getElementById("detail-sticky");
   if (detailSticky) {
     let shortsWheelTimer = null;
@@ -396,23 +437,92 @@ updateActiveNav();
 
 // ── SNS 카드 클릭 → 큰 커버로 전환 ──
 function switchSnsCard(card, imgSrc, title, sub) {
-  // 커버 이미지 교체
   const coverImg = document.getElementById("player-cover-img");
   if (coverImg) coverImg.src = imgSrc;
 
-  // 제목/부제목 교체
   const playerTitle = document.getElementById("player-title");
   const playerSub = document.getElementById("player-sub");
   if (playerTitle) playerTitle.textContent = title;
   if (playerSub) playerSub.textContent = sub;
 
-  // 커버 상단 텍스트 교체
   const coverSub = document.getElementById("player-cover-sub");
   if (coverSub) coverSub.textContent = title + " · " + sub;
 
-  // 선택된 카드 표시
   document
     .querySelectorAll(".sns-small-card")
     .forEach((c) => c.classList.remove("selected"));
   card.classList.add("selected");
 }
+
+// ══════════════════════════════════════
+// 브랜드 디자인 섹션 — 이미지 슬라이더
+// ══════════════════════════════════════
+
+(function initBrandSlider() {
+  const slider = document.getElementById("brand-feed-slider");
+  const prevBtn = document.getElementById("brand-prev");
+  const nextBtn = document.getElementById("brand-next");
+  const dots = document.querySelectorAll(".brand-dot-item");
+  const curEl = document.getElementById("brand-slide-cur");
+  const totalEl = document.getElementById("brand-slide-total");
+
+  if (!slider) return;
+
+  const slides = slider.querySelectorAll(".brand-slide");
+  const total = slides.length;
+  let cur = 0;
+  let startX = null;
+  let isDrag = false;
+
+  if (totalEl) totalEl.textContent = total;
+
+  function goTo(index) {
+    cur = (index + total) % total;
+    slider.style.transform = `translateX(-${cur * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle("active", i === cur));
+    if (curEl) curEl.textContent = cur + 1;
+  }
+
+  if (prevBtn) prevBtn.addEventListener("click", () => goTo(cur - 1));
+  if (nextBtn) nextBtn.addEventListener("click", () => goTo(cur + 1));
+
+  // 터치/드래그 스와이프
+  const wrap = document.getElementById("brand-feed-slider-wrap");
+  if (wrap) {
+    wrap.addEventListener("mousedown", (e) => {
+      startX = e.clientX;
+      isDrag = false;
+    });
+    wrap.addEventListener("mousemove", (e) => {
+      if (startX !== null && Math.abs(e.clientX - startX) > 6) isDrag = true;
+    });
+    wrap.addEventListener("mouseup", (e) => {
+      if (startX === null) return;
+      const diff = startX - e.clientX;
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? cur + 1 : cur - 1);
+      startX = null;
+      setTimeout(() => {
+        isDrag = false;
+      }, 0);
+    });
+    wrap.addEventListener("mouseleave", () => {
+      startX = null;
+    });
+
+    wrap.addEventListener(
+      "touchstart",
+      (e) => {
+        startX = e.touches[0].clientX;
+      },
+      { passive: true },
+    );
+    wrap.addEventListener("touchend", (e) => {
+      if (startX === null) return;
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? cur + 1 : cur - 1);
+      startX = null;
+    });
+  }
+
+  goTo(0);
+})();
