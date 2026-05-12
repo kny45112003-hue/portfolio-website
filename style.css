@@ -18,6 +18,8 @@ body {
   color: var(--white);
   font-family: "Pretendard", sans-serif;
   overflow-x: hidden;
+  min-width: 1920px;
+  min-height: 1080px;
 }
 
 /* ── YOUTUBE NAV ── */

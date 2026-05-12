@@ -2,7 +2,7 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=1920, height=1080" />
     <title>한식진흥원 — Kim Na Yeon</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Roboto:wght@300;400;500;700&display=swap"
@@ -24,25 +24,21 @@
         --dark: #1c1c1c;
       }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
 
       body {
         background: var(--black);
         color: var(--white);
         font-family: "Pretendard", sans-serif;
         overflow-x: hidden;
+        min-width: 1920px;
+        min-height: 1080px;
       }
 
       /* NAV */
       #yt-nav {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
+        top: 0; left: 0; right: 0;
         height: 100px;
         background: var(--black);
         border-bottom: 1px solid #1a1a1a;
@@ -53,20 +49,12 @@
         z-index: 100;
       }
 
-      .yt-logo {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        text-decoration: none;
-      }
+      .yt-logo { display: flex; align-items: center; gap: 6px; text-decoration: none; }
       .yt-logo-icon {
-        width: 52px;
-        height: 37px;
+        width: 52px; height: 37px;
         background: var(--red);
         border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: flex; align-items: center; justify-content: center;
       }
       .yt-logo-icon::after {
         content: "";
@@ -83,17 +71,11 @@
       }
       .back-btn {
         margin-left: auto;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: #888;
-        text-decoration: none;
-        font-size: 14px;
+        display: flex; align-items: center; gap: 8px;
+        color: #888; text-decoration: none; font-size: 14px;
         transition: color 0.2s;
       }
-      .back-btn:hover {
-        color: var(--white);
-      }
+      .back-btn:hover { color: var(--white); }
 
       /* HERO */
       #detail-hero {
@@ -113,8 +95,7 @@
       #detail-hero::before {
         content: "韓";
         position: absolute;
-        top: 50%;
-        right: 80px;
+        top: 50%; right: 80px;
         transform: translateY(-50%);
         font-size: 400px;
         color: rgba(198, 167, 110, 0.08);
@@ -140,9 +121,7 @@
         letter-spacing: -2px;
         margin-bottom: 32px;
       }
-      .hero-title span {
-        color: var(--gold);
-      }
+      .hero-title span { color: var(--gold); }
 
       .hero-desc {
         font-size: 18px;
@@ -231,16 +210,9 @@
         color: #aaa;
         line-height: 1.9;
       }
-      .overview-text p strong {
-        color: var(--cream);
-        font-weight: 500;
-      }
+      .overview-text p strong { color: var(--cream); font-weight: 500; }
 
-      .overview-keywords {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-      }
+      .overview-keywords { display: flex; flex-direction: column; gap: 24px; }
 
       .keyword-item {
         display: flex;
@@ -257,16 +229,10 @@
         width: 180px;
         flex-shrink: 0;
       }
-      .keyword-kr {
-        font-size: 14px;
-        color: #888;
-        letter-spacing: 0.05em;
-      }
+      .keyword-kr { font-size: 14px; color: #888; letter-spacing: 0.05em; }
 
       /* STYLE GUIDE */
-      #styleguide {
-        background: var(--dark);
-      }
+      #styleguide { background: var(--dark); }
 
       .color-grid {
         display: grid;
@@ -274,106 +240,47 @@
         gap: 16px;
         margin-bottom: 60px;
       }
-      .color-chip {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
+      .color-chip { display: flex; flex-direction: column; gap: 12px; }
       .color-swatch {
         width: 100%;
         aspect-ratio: 1;
         border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255,255,255,0.1);
       }
-      .color-hex {
-        font-size: 12px;
-        color: #888;
-        font-family: monospace;
-        letter-spacing: 0.05em;
-      }
-      .color-name {
-        font-size: 13px;
-        color: var(--cream);
-        font-weight: 500;
-      }
+      .color-hex { font-size: 12px; color: #888; font-family: monospace; letter-spacing: 0.05em; }
+      .color-name { font-size: 13px; color: var(--cream); font-weight: 500; }
 
-      .font-showcase {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-      }
-      .font-item {
-        padding: 40px;
-        border: 1px solid #2a2a2a;
-        border-radius: 16px;
-      }
-      .font-label {
-        font-size: 11px;
-        color: var(--gold);
-        letter-spacing: 0.15em;
-        margin-bottom: 16px;
-      }
-      .font-sample-myungjo {
-        font-family: "Noto Serif KR", serif;
-        font-size: 28px;
-        color: var(--cream);
-        line-height: 1.6;
-      }
-      .font-sample-gothic {
-        font-family: "Pretendard", sans-serif;
-        font-size: 28px;
-        font-weight: 300;
-        color: var(--cream);
-        line-height: 1.6;
-      }
+      .font-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+      .font-item { padding: 40px; border: 1px solid #2a2a2a; border-radius: 16px; }
+      .font-label { font-size: 11px; color: var(--gold); letter-spacing: 0.15em; margin-bottom: 16px; }
+      .font-sample-myungjo { font-family: "Noto Serif KR", serif; font-size: 28px; color: var(--cream); line-height: 1.6; }
+      .font-sample-gothic { font-family: "Pretendard", sans-serif; font-size: 28px; font-weight: 300; color: var(--cream); line-height: 1.6; }
 
       /* PROJECT GOAL */
-      #goal {
-        background: var(--navy);
-      }
+      #goal { background: var(--navy); }
 
-      .goal-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-      }
+      .goal-list { display: flex; flex-direction: column; gap: 0; }
       .goal-item {
         display: grid;
         grid-template-columns: 80px 1fr;
         gap: 40px;
         padding: 48px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
         align-items: start;
       }
       .goal-num {
         font-family: "Big Shoulders Display", sans-serif;
-        font-size: 64px;
-        font-weight: 900;
-        color: rgba(198, 167, 110, 0.3);
+        font-size: 64px; font-weight: 900;
+        color: rgba(198,167,110,0.3);
         line-height: 1;
       }
-      .goal-content h3 {
-        font-size: 22px;
-        color: var(--cream);
-        font-weight: 600;
-        margin-bottom: 12px;
-      }
-      .goal-content p {
-        font-size: 16px;
-        color: rgba(255, 247, 233, 0.5);
-        line-height: 1.8;
-      }
+      .goal-content h3 { font-size: 22px; color: var(--cream); font-weight: 600; margin-bottom: 12px; }
+      .goal-content p { font-size: 16px; color: rgba(255,247,233,0.5); line-height: 1.8; }
 
       /* PERSONA */
-      #persona {
-        background: var(--black);
-      }
+      #persona { background: var(--black); }
 
-      .persona-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-      }
+      .persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
       .persona-card {
         padding: 48px;
         border: 1px solid #2a2a2a;
@@ -384,88 +291,36 @@
       .persona-card::before {
         content: "";
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
+        top: 0; left: 0; right: 0;
         height: 4px;
         background: var(--gold);
       }
       .persona-age {
         font-family: "Big Shoulders Display", sans-serif;
-        font-size: 80px;
-        font-weight: 900;
-        color: rgba(198, 167, 110, 0.15);
+        font-size: 80px; font-weight: 900;
+        color: rgba(198,167,110,0.15);
         position: absolute;
-        top: 24px;
-        right: 24px;
+        top: 24px; right: 24px;
         line-height: 1;
       }
-      .persona-name {
-        font-family: "Big Shoulders Display", sans-serif;
-        font-size: 32px;
-        font-weight: 900;
-        color: var(--cream);
-        margin-bottom: 8px;
-      }
-      .persona-role {
-        font-size: 13px;
-        color: var(--gold);
-        letter-spacing: 0.1em;
-        margin-bottom: 32px;
-      }
-      .persona-section {
-        margin-bottom: 20px;
-      }
-      .persona-label {
-        font-size: 11px;
-        color: var(--gold);
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        margin-bottom: 8px;
-      }
-      .persona-text {
-        font-size: 14px;
-        color: #aaa;
-        line-height: 1.7;
-      }
+      .persona-name { font-family: "Big Shoulders Display", sans-serif; font-size: 32px; font-weight: 900; color: var(--cream); margin-bottom: 8px; }
+      .persona-role { font-size: 13px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 32px; }
+      .persona-section { margin-bottom: 20px; }
+      .persona-label { font-size: 11px; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
+      .persona-text { font-size: 14px; color: #aaa; line-height: 1.7; }
 
       /* OUTPUT */
-      #output {
-        background: var(--cream);
-      }
-      #output .section-title {
-        color: var(--dark);
-      }
-      #output .section-num {
-        color: var(--wine);
-      }
+      #output { background: var(--cream); }
+      #output .section-title { color: var(--dark); }
+      #output .section-num { color: var(--wine); }
 
-      .output-grid {
-        display: flex;
-        gap: 24px;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-      .output-img {
-        border-radius: 12px;
-        overflow: hidden;
-        background: #ddd;
-        width: 300px;
-        height: 650px;
-      }
-      .output-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+      .output-grid { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+      .output-img { border-radius: 12px; overflow: hidden; background: #ddd; width: 300px; height: 650px; }
+      .output-img img { width: 100%; height: 100%; object-fit: cover; }
       .output-img.dummy {
         background: linear-gradient(135deg, #e8d5b5, #c6a76e30);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #c6a76e;
-        font-size: 13px;
-        letter-spacing: 0.1em;
+        display: flex; align-items: center; justify-content: center;
+        color: #c6a76e; font-size: 13px; letter-spacing: 0.1em;
       }
 
       /* FOOTER */
@@ -477,45 +332,66 @@
         align-items: center;
         border-top: 1px solid #2a2a2a;
       }
-      .footer-left h2 {
-        font-family: "Big Shoulders Display", sans-serif;
-        font-size: 48px;
-        color: var(--cream);
-        font-weight: 900;
-        margin-bottom: 8px;
-      }
-      .footer-left p {
-        font-size: 14px;
-        color: #888;
-      }
+      .footer-left h2 { font-family: "Big Shoulders Display", sans-serif; font-size: 48px; color: var(--cream); font-weight: 900; margin-bottom: 8px; }
+      .footer-left p { font-size: 14px; color: #888; }
       .footer-right a {
         display: inline-block;
         padding: 16px 40px;
         background: var(--gold);
         color: var(--dark);
         text-decoration: none;
-        font-weight: 700;
-        font-size: 14px;
-        letter-spacing: 0.1em;
+        font-weight: 700; font-size: 14px; letter-spacing: 0.1em;
         border-radius: 40px;
         transition: background 0.2s;
       }
-      .footer-right a:hover {
+      .footer-right a:hover { background: var(--cream); }
+
+      .hero-link-btn {
+        display: inline-block;
+        padding: 14px 32px;
+        width: 180px;
+        text-align: center;
+        background: var(--gold);
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        border-radius: 40px;
+        border: 1px solid var(--gold);
+        transition: background 0.2s, transform 0.2s, border-color 0.2s, color 0.2s;
+        white-space: nowrap;
+        box-sizing: border-box;
+      }
+      .hero-link-btn:hover {
         background: var(--cream);
+        border-color: var(--cream);
+        color: var(--dark);
+        transform: translateY(-2px);
       }
 
       /* ANIMATE */
+        display: inline-block;
+        padding: 18px 56px;
+        background: var(--gold);
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 0.08em;
+        border-radius: 40px;
+        transition: background 0.2s, transform 0.2s;
+      }
+      .output-link-btn:hover {
+        background: var(--cream);
+        transform: translateY(-2px);
+      }
       .fade-up {
         opacity: 0;
         transform: translateY(40px);
-        transition:
-          opacity 0.7s ease,
-          transform 0.7s ease;
+        transition: opacity 0.7s ease, transform 0.7s ease;
       }
-      .fade-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      .fade-up.visible { opacity: 1; transform: translateY(0); }
     </style>
   </head>
   <body>
@@ -574,6 +450,35 @@
               alt="Illustrator"
             />
           </div>
+        </div>
+        <div
+          class="hero-meta-item"
+          style="
+            margin-left: auto;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+          "
+        >
+          <a
+            href="https://www.hansik.or.kr/static/businessInfo?menuSn=519"
+            target="_blank"
+            class="hero-link-btn"
+            style="
+              background: transparent;
+              border: 1px solid var(--gold);
+              color: var(--gold);
+            "
+          >
+            🌐 원본 사이트
+          </a>
+          <a
+            href="https://www.figma.com/proto/BGURiIdmKyhNR0VlrmYgn7/Untitled?node-id=53-102&viewport=927%2C560%2C0.06&t=lHv97NxGKe5cMttF-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1"
+            target="_blank"
+            class="hero-link-btn"
+          >
+            🔗 리디자인 바로가기
+          </a>
         </div>
       </div>
     </section>
@@ -749,6 +654,15 @@
         <div class="output-img">
           <img src="assets/image/slide3-3.png" alt="결과물 3" />
         </div>
+      </div>
+      <div class="fade-up" style="margin-top: 60px; text-align: center">
+        <a
+          href="https://www.figma.com/proto/BGURiIdmKyhNR0VlrmYgn7/Untitled?node-id=53-102&viewport=927%2C560%2C0.06&t=lHv97NxGKe5cMttF-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1"
+          target="_blank"
+          class="output-link-btn"
+        >
+          🔗 프로젝트 바로가기
+        </a>
       </div>
     </section>
 
