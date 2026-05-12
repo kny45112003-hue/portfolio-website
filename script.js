@@ -527,3 +527,50 @@ function switchSnsCard(card, imgSrc, title, sub) {
 
   goTo(0);
 })();
+
+// ── 페이지 전환 애니메이션 (슬라이드 업) ──
+(function initPageTransition() {
+  // 오버레이 생성
+  const overlay = document.createElement("div");
+  overlay.id = "page-transition-overlay";
+  overlay.style.cssText = `
+    position: fixed;
+    inset: 0;
+    background: #0a0a0a;
+    z-index: 9999;
+    transform: translateY(100%);
+    transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+    pointer-events: none;
+  `;
+  document.body.appendChild(overlay);
+
+  // 슬라이드 업 후 이동
+  function navigateTo(url) {
+    overlay.style.pointerEvents = "all";
+    overlay.style.transform = "translateY(0%)";
+    setTimeout(() => {
+      window.location.href = url;
+    }, 580);
+  }
+
+  // 캐러셀 카드 onclick 가로채기
+  document.querySelectorAll(".carousel-card[onclick]").forEach((card) => {
+    const attr = card.getAttribute("onclick");
+    const match = attr && attr.match(/location\.href\s*=\s*['"](.+?)['"]/);
+    if (match) {
+      const url = match[1];
+      card.removeAttribute("onclick");
+      card.addEventListener("click", () => {
+        if (card.classList.contains("active")) navigateTo(url);
+      });
+    }
+  });
+
+  // 뒤로가기 버튼에도 적용
+  document.querySelectorAll("a.back-btn, a[href='index.html']").forEach((a) => {
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      navigateTo(a.href);
+    });
+  });
+})();

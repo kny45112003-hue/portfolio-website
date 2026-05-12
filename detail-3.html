@@ -441,14 +441,16 @@
       }
 
       .output-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
         gap: 24px;
+        justify-content: center;
+        flex-wrap: wrap;
       }
       .output-img {
         border-radius: 12px;
         overflow: hidden;
         background: #ddd;
+        width: 300px;
         height: 650px;
       }
       .output-img img {
@@ -762,6 +764,55 @@
     </footer>
 
     <script>
+      // 페이지 진입 애니메이션 (슬라이드 다운)
+      (function () {
+        const overlay = document.createElement("div");
+        overlay.style.cssText = `
+          position: fixed; inset: 0;
+          background: #0a0a0a;
+          z-index: 9999;
+          transform: translateY(0%);
+          transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+          pointer-events: none;
+        `;
+        document.body.appendChild(overlay);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            overlay.style.transform = "translateY(-100%)";
+            setTimeout(() => overlay.remove(), 600);
+          });
+        });
+
+        // 뒤로가기 버튼 전환
+        document
+          .querySelectorAll("a.back-btn, a[href='index.html']")
+          .forEach((a) => {
+            a.addEventListener("click", (e) => {
+              e.preventDefault();
+              const url = a.href;
+              const exitOverlay = document.createElement("div");
+              exitOverlay.style.cssText = `
+              position: fixed; inset: 0;
+              background: #0a0a0a;
+              z-index: 9999;
+              transform: translateY(100%);
+              transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+              pointer-events: all;
+            `;
+              document.body.appendChild(exitOverlay);
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                  exitOverlay.style.transform = "translateY(0%)";
+                  setTimeout(() => {
+                    window.location.href = url;
+                  }, 580);
+                });
+              });
+            });
+          });
+      })();
+
+      // 스크롤 애니메이션
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
