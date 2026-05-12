@@ -59,7 +59,6 @@
         gap: 6px;
         text-decoration: none;
       }
-
       .yt-logo-icon {
         width: 52px;
         height: 37px;
@@ -69,7 +68,6 @@
         align-items: center;
         justify-content: center;
       }
-
       .yt-logo-icon::after {
         content: "";
         border-left: 17px solid white;
@@ -77,14 +75,12 @@
         border-bottom: 11px solid transparent;
         margin-left: 3px;
       }
-
       .yt-logo-text {
         color: var(--white);
         font-family: "Big Shoulders Display", sans-serif;
         font-size: 48px;
         letter-spacing: 1px;
       }
-
       .back-btn {
         margin-left: auto;
         display: flex;
@@ -95,7 +91,6 @@
         font-size: 14px;
         transition: color 0.2s;
       }
-
       .back-btn:hover {
         color: var(--white);
       }
@@ -138,14 +133,13 @@
 
       .hero-title {
         font-family: "Big Shoulders Display", sans-serif;
-        font-size: clamp(60px, 10vw, 120px);
+        font-size: clamp(52px, 8vw, 100px);
         font-weight: 900;
         line-height: 1;
         color: var(--cream);
         letter-spacing: -2px;
         margin-bottom: 32px;
       }
-
       .hero-title span {
         color: var(--gold);
       }
@@ -161,6 +155,8 @@
       .hero-meta {
         display: flex;
         gap: 40px;
+        flex-wrap: wrap;
+        align-items: flex-end;
       }
 
       .hero-meta-item {
@@ -180,6 +176,21 @@
         font-size: 16px;
         color: var(--cream);
         font-weight: 500;
+      }
+
+      .tool-icons {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 2px;
+      }
+
+      .tool-icons img {
+        width: 24px;
+        height: 24px;
+        background: #fff;
+        border-radius: 5px;
+        padding: 2px;
       }
 
       /* SECTIONS */
@@ -220,7 +231,6 @@
         color: #aaa;
         line-height: 1.9;
       }
-
       .overview-text p strong {
         color: var(--cream);
         font-weight: 500;
@@ -239,7 +249,6 @@
         padding: 24px 0;
         border-bottom: 1px solid #1a1a1a;
       }
-
       .keyword-en {
         font-family: "Big Shoulders Display", sans-serif;
         font-size: 48px;
@@ -248,7 +257,6 @@
         width: 180px;
         flex-shrink: 0;
       }
-
       .keyword-kr {
         font-size: 14px;
         color: #888;
@@ -266,27 +274,23 @@
         gap: 16px;
         margin-bottom: 60px;
       }
-
       .color-chip {
         display: flex;
         flex-direction: column;
         gap: 12px;
       }
-
       .color-swatch {
         width: 100%;
         aspect-ratio: 1;
         border-radius: 12px;
         border: 1px solid rgba(255, 255, 255, 0.1);
       }
-
       .color-hex {
         font-size: 12px;
         color: #888;
         font-family: monospace;
         letter-spacing: 0.05em;
       }
-
       .color-name {
         font-size: 13px;
         color: var(--cream);
@@ -298,27 +302,23 @@
         grid-template-columns: 1fr 1fr;
         gap: 40px;
       }
-
       .font-item {
         padding: 40px;
         border: 1px solid #2a2a2a;
         border-radius: 16px;
       }
-
       .font-label {
         font-size: 11px;
         color: var(--gold);
         letter-spacing: 0.15em;
         margin-bottom: 16px;
       }
-
       .font-sample-myungjo {
         font-family: "Noto Serif KR", serif;
         font-size: 28px;
         color: var(--cream);
         line-height: 1.6;
       }
-
       .font-sample-gothic {
         font-family: "Pretendard", sans-serif;
         font-size: 28px;
@@ -337,7 +337,6 @@
         flex-direction: column;
         gap: 0;
       }
-
       .goal-item {
         display: grid;
         grid-template-columns: 80px 1fr;
@@ -346,7 +345,6 @@
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         align-items: start;
       }
-
       .goal-num {
         font-family: "Big Shoulders Display", sans-serif;
         font-size: 64px;
@@ -354,14 +352,12 @@
         color: rgba(198, 167, 110, 0.3);
         line-height: 1;
       }
-
       .goal-content h3 {
         font-size: 22px;
         color: var(--cream);
         font-weight: 600;
         margin-bottom: 12px;
       }
-
       .goal-content p {
         font-size: 16px;
         color: rgba(255, 247, 233, 0.5);
@@ -378,7 +374,6 @@
         grid-template-columns: 1fr 1fr;
         gap: 40px;
       }
-
       .persona-card {
         padding: 48px;
         border: 1px solid #2a2a2a;
@@ -386,7 +381,6 @@
         position: relative;
         overflow: hidden;
       }
-
       .persona-card::before {
         content: "";
         position: absolute;
@@ -396,7 +390,6 @@
         height: 4px;
         background: var(--gold);
       }
-
       .persona-age {
         font-family: "Big Shoulders Display", sans-serif;
         font-size: 80px;
@@ -407,7 +400,6 @@
         right: 24px;
         line-height: 1;
       }
-
       .persona-name {
         font-family: "Big Shoulders Display", sans-serif;
         font-size: 32px;
@@ -415,18 +407,15 @@
         color: var(--cream);
         margin-bottom: 8px;
       }
-
       .persona-role {
         font-size: 13px;
         color: var(--gold);
         letter-spacing: 0.1em;
         margin-bottom: 32px;
       }
-
       .persona-section {
         margin-bottom: 20px;
       }
-
       .persona-label {
         font-size: 11px;
         color: var(--gold);
@@ -434,22 +423,19 @@
         text-transform: uppercase;
         margin-bottom: 8px;
       }
-
       .persona-text {
         font-size: 14px;
         color: #aaa;
         line-height: 1.7;
       }
 
-      /* WIREFRAME / OUTPUT */
+      /* OUTPUT */
       #output {
         background: var(--cream);
       }
-
       #output .section-title {
         color: var(--dark);
       }
-
       #output .section-num {
         color: var(--wine);
       }
@@ -459,20 +445,17 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 24px;
       }
-
       .output-img {
         border-radius: 12px;
         overflow: hidden;
         background: #ddd;
-        aspect-ratio: 9/16;
+        height: 650px;
       }
-
       .output-img img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
-
       .output-img.dummy {
         background: linear-gradient(135deg, #e8d5b5, #c6a76e30);
         display: flex;
@@ -492,7 +475,6 @@
         align-items: center;
         border-top: 1px solid #2a2a2a;
       }
-
       .footer-left h2 {
         font-family: "Big Shoulders Display", sans-serif;
         font-size: 48px;
@@ -500,12 +482,10 @@
         font-weight: 900;
         margin-bottom: 8px;
       }
-
       .footer-left p {
         font-size: 14px;
         color: #888;
       }
-
       .footer-right a {
         display: inline-block;
         padding: 16px 40px;
@@ -518,7 +498,6 @@
         border-radius: 40px;
         transition: background 0.2s;
       }
-
       .footer-right a:hover {
         background: var(--cream);
       }
@@ -531,7 +510,6 @@
           opacity 0.7s ease,
           transform 0.7s ease;
       }
-
       .fade-up.visible {
         opacity: 1;
         transform: translateY(0);
@@ -552,7 +530,7 @@
     <section id="detail-hero">
       <div class="hero-tag fade-up">Website Redesign · 2026 · Team Project</div>
       <h1 class="hero-title fade-up">
-        Korean<br />Food<br /><span>Institute</span>
+        Korean Food<br /><span>Promotion</span><br />Institute
       </h1>
       <p class="hero-desc fade-up">
         전통적인 한국의 미(美)를 현대적인 감각으로 재해석하여, 신뢰감 있는
@@ -568,12 +546,32 @@
           <span class="hero-meta-value">UX/UI Design</span>
         </div>
         <div class="hero-meta-item">
-          <span class="hero-meta-label">Year</span>
-          <span class="hero-meta-value">2026</span>
+          <span class="hero-meta-label">Period</span>
+          <span class="hero-meta-value">2026.02.12 – 02.26</span>
         </div>
         <div class="hero-meta-item">
           <span class="hero-meta-label">Team</span>
           <span class="hero-meta-value">Team Project</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">Tools</span>
+          <div class="tool-icons">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+              title="Figma"
+              alt="Figma"
+            />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg"
+              title="Photoshop"
+              alt="Photoshop"
+            />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-original.svg"
+              title="Illustrator"
+              alt="Illustrator"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -585,10 +583,10 @@
         <h2 class="section-title">Concept<br />Visual</h2>
         <p>
           한식진흥원의 정체성인 <strong>전통성</strong>과
-          <strong>세계화</strong>를 동시에 담아내는 디자인을 목표로 했습니다.<br /><br />단순히
-          정보를 나열하는 것이 아니라, 공공기관 특유의 <strong>신뢰감</strong>을
-          유지하면서도 한식의 역동성과 풍요로움을 시각적으로 전달하고자
-          했습니다.
+          <strong>세계화</strong>를 동시에 담아내는 디자인을 목표로 했습니다.<br /><br />
+          단순히 정보를 나열하는 것이 아니라, 공공기관 특유의
+          <strong>신뢰감</strong>을 유지하면서도 한식의 역동성과 풍요로움을
+          시각적으로 전달하고자 했습니다.
         </p>
       </div>
       <div class="overview-keywords fade-up">
@@ -740,9 +738,15 @@
       <div class="section-num fade-up">05 — Output</div>
       <h2 class="section-title fade-up">Result</h2>
       <div class="output-grid fade-up">
-        <div class="output-img dummy">이미지 준비 중</div>
-        <div class="output-img dummy">이미지 준비 중</div>
-        <div class="output-img dummy">이미지 준비 중</div>
+        <div class="output-img">
+          <img src="assets/image/slide3-1.png" alt="결과물 1" />
+        </div>
+        <div class="output-img">
+          <img src="assets/image/slide3-2.png" alt="결과물 2" />
+        </div>
+        <div class="output-img">
+          <img src="assets/image/slide3-3.png" alt="결과물 3" />
+        </div>
       </div>
     </section>
 
@@ -750,7 +754,7 @@
     <footer id="detail-footer">
       <div class="footer-left">
         <h2>한식진흥원</h2>
-        <p>Website Redesign · 2026</p>
+        <p>Website Redesign · 2026.02.12 – 02.26</p>
       </div>
       <div class="footer-right">
         <a href="index.html">← 포트폴리오로</a>
@@ -758,18 +762,14 @@
     </footer>
 
     <script>
-      // 스크롤 애니메이션
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
+            if (entry.isIntersecting) entry.target.classList.add("visible");
           });
         },
         { threshold: 0.1 },
       );
-
       document
         .querySelectorAll(".fade-up")
         .forEach((el) => observer.observe(el));

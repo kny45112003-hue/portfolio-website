@@ -296,9 +296,9 @@ if (shortsList && originalShorts.length) {
         // 툴 아이콘 매핑
         const toolIconMap = {
           Photoshop:
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg",
+            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg",
           Illustrator:
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg",
+            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-original.svg",
           Figma:
             "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
           HTML: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
@@ -331,7 +331,8 @@ if (shortsList && originalShorts.length) {
                 img.src = src;
                 img.alt = tool;
                 img.title = tool;
-                img.style.cssText = "width:28px; height:28px;";
+                img.style.cssText =
+                  "width:28px; height:28px; background:#fff; border-radius:6px; padding:2px;";
                 panelToolsBox.appendChild(img);
               }
             });

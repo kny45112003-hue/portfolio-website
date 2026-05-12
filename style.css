@@ -637,13 +637,7 @@ body {
   position: relative;
 }
 .carousel-card .card-thumb.dummy::after {
-  content: "🎬";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 32px;
-  opacity: 0.3;
+  content: none;
 }
 .carousel-card .card-thumb img {
   width: 100%;
@@ -779,8 +773,8 @@ body {
   bottom: 0 !important;
   width: 500px !important;
   height: calc(100vh - 100px) !important;
-  background: #111 !important;
-  border-left: 1px solid #222 !important;
+  background: #1e1e1e !important;
+  border-left: 1px solid #333 !important;
   padding: 24px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -799,8 +793,10 @@ body {
   pointer-events: none !important;
 }
 
-#panel-info-rows {
-  display: none;
+#panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .panel-link-btn {
   display: none;
@@ -848,7 +844,7 @@ body {
   align-items: center;
 }
 .stat-box {
-  background: #272727;
+  background: #2e2e2e;
   border-radius: 8px;
   padding: 10px 16px;
   text-align: center;
@@ -863,10 +859,10 @@ body {
 }
 .stat-label {
   font-size: 12px;
-  color: #888;
+  color: #bbb;
 }
 .stat-btn {
-  background: #272727;
+  background: #2e2e2e;
   border-radius: 8px;
   padding: 10px 16px;
   color: var(--white);
@@ -876,11 +872,11 @@ body {
   text-align: center;
 }
 .stat-btn:hover {
-  background: #3a3a3a;
+  background: #444;
 }
 #panel-desc {
   font-size: 13px;
-  color: #aaa;
+  color: #ddd;
   line-height: 1.7;
 }
 
@@ -910,7 +906,7 @@ body {
 }
 
 #sns-player {
-  width: 380px !important;
+  width: 520px !important;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -918,8 +914,8 @@ body {
 }
 
 #player-cover {
-  width: 380px !important;
-  height: 380px !important;
+  width: 520px !important;
+  height: 520px !important;
   border-radius: 16px;
   overflow: hidden;
   position: relative;
