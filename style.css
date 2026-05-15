@@ -804,10 +804,7 @@ body {
   display: none;
 }
 #panel-desc-label {
-  font-size: 12px;
-  color: #666;
-  letter-spacing: 0.05em;
-  margin: 14px 0 6px;
+  display: none;
 }
 #panel-project {
   font-size: 15px;
@@ -815,6 +812,37 @@ body {
   color: var(--white);
   line-height: 1.4;
   margin-bottom: 4px;
+}
+.panel-section {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #222;
+}
+.panel-section-title {
+  font-size: 11px;
+  color: #888;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.panel-section-body {
+  font-size: 12px;
+  color: #bbb;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+/* 패널 스크롤 */
+#panel-body {
+  overflow-y: auto;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
+}
+#panel-body::-webkit-scrollbar {
+  width: 3px;
+}
+#panel-body::-webkit-scrollbar-thumb {
+  background: #333;
 }
 #panel-title {
   font-size: 20px;
@@ -843,7 +871,7 @@ body {
 #panel-stats {
   display: flex;
   gap: 8px;
-  align-items: center;
+  align-items: stretch;
 }
 .stat-box {
   background: #2e2e2e;
@@ -851,6 +879,11 @@ body {
   padding: 10px 16px;
   text-align: center;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
 }
 .stat-num {
   font-size: 13px;
@@ -869,9 +902,13 @@ body {
   padding: 10px 16px;
   color: var(--white);
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
   font-size: 14px;
   font-weight: 500;
-  text-align: center;
+  white-space: nowrap;
 }
 .stat-btn:hover {
   background: #444;

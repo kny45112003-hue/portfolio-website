@@ -312,11 +312,67 @@ if (shortsList && originalShorts.length) {
         const panelToolsBox = document.getElementById("panel-tools-icons");
         const panelDesc = document.getElementById("panel-desc");
         const panelLink = document.getElementById("panel-link");
+        const panelGoal = document.getElementById("panel-goal");
+        const panelGoalWrap = document.getElementById("panel-goal-wrap");
+        const panelProblem = document.getElementById("panel-problem");
+        const panelProblemWrap = document.getElementById("panel-problem-wrap");
+        const panelSolve = document.getElementById("panel-solve");
+        const panelSolveWrap = document.getElementById("panel-solve-wrap");
+        const panelRetro = document.getElementById("panel-retro");
+        const panelRetroWrap = document.getElementById("panel-retro-wrap");
+        const panelColors = document.getElementById("panel-colors");
+        const panelFonts = document.getElementById("panel-fonts");
+        const panelDesignWrap = document.getElementById("panel-design-wrap");
+
+        const colors = card.dataset.colors || "";
+        const colornames = card.dataset.colornames || "";
+        const fonts = card.dataset.fonts || "";
+        const goal = card.dataset.goal || "";
+        const problem = card.dataset.problem || "";
+        const solve = card.dataset.solve || "";
+        const retro = card.dataset.retro || "";
 
         if (panelProject) panelProject.textContent = title;
         if (panelPeriod) panelPeriod.textContent = period;
         if (panelDesc) panelDesc.textContent = desc;
         if (panelLink) panelLink.href = link;
+
+        if (panelGoal) panelGoal.textContent = goal;
+        if (panelGoalWrap)
+          panelGoalWrap.style.display = goal ? "block" : "none";
+        if (panelProblem) panelProblem.textContent = problem;
+        if (panelProblemWrap)
+          panelProblemWrap.style.display = problem ? "block" : "none";
+        if (panelSolve) panelSolve.textContent = solve;
+        if (panelSolveWrap)
+          panelSolveWrap.style.display = solve ? "block" : "none";
+        if (panelRetro) panelRetro.textContent = retro;
+        if (panelRetroWrap)
+          panelRetroWrap.style.display = retro ? "block" : "none";
+
+        // 컬러 칩 렌더링
+        if (panelColors) {
+          panelColors.innerHTML = "";
+          if (colors) {
+            colors.split(",").forEach((hex) => {
+              const wrap = document.createElement("div");
+              wrap.style.cssText =
+                "display:flex;flex-direction:column;align-items:center;gap:5px;";
+              const chip = document.createElement("div");
+              chip.style.cssText = `width:52px;height:32px;border-radius:6px;background:${hex.trim()};border:1px solid rgba(255,255,255,0.15);box-shadow:0 2px 6px rgba(0,0,0,0.3);`;
+              const label = document.createElement("span");
+              label.style.cssText =
+                "font-size:9px;color:#888;font-family:monospace;letter-spacing:0.02em;";
+              label.textContent = hex.trim();
+              wrap.appendChild(chip);
+              wrap.appendChild(label);
+              panelColors.appendChild(wrap);
+            });
+          }
+        }
+        if (panelFonts) panelFonts.textContent = fonts ? `폰트: ${fonts}` : "";
+        if (panelDesignWrap)
+          panelDesignWrap.style.display = colors || fonts ? "block" : "none";
 
         // 툴 아이콘 렌더링
         if (panelToolsBox) {

@@ -109,16 +109,15 @@
         overflow: hidden;
       }
       #detail-hero::before {
-        content: "Dishly";
+        content: "";
         position: absolute;
         top: 50%;
         right: 60px;
         transform: translateY(-50%);
-        font-size: 280px;
-        color: rgba(59, 130, 246, 0.07);
-        font-family: "Big Shoulders Display", sans-serif;
-        font-weight: 900;
-        line-height: 1;
+        width: 560px;
+        height: 560px;
+        background: url("assets/image/icon-2.png") center/contain no-repeat;
+        opacity: 0.12;
         pointer-events: none;
       }
 
@@ -763,7 +762,9 @@
         <div class="yt-logo-icon"></div>
         <span class="yt-logo-text">KimNayeon</span>
       </a>
-      <a href="index.html" class="back-btn">← 포트폴리오로 돌아가기</a>
+      <a href="index.html#section-service" class="back-btn"
+        >← 포트폴리오로 돌아가기</a
+      >
     </nav>
 
     <!-- HERO -->
@@ -1275,7 +1276,7 @@
         <p>App Design · 2026.03.23 – 04.29</p>
       </div>
       <div class="footer-right">
-        <a href="index.html">← 포트폴리오로</a>
+        <a href="index.html#section-service">← 포트폴리오로</a>
       </div>
     </footer>
 
@@ -1292,7 +1293,7 @@
           });
         });
         document
-          .querySelectorAll("a.back-btn, a[href='index.html']")
+          .querySelectorAll("a.back-btn, a[href='index.html#section-service']")
           .forEach((a) => {
             a.addEventListener("click", (e) => {
               e.preventDefault();
