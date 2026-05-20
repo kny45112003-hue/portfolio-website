@@ -13,6 +13,21 @@
       rel="stylesheet"
     />
     <style>
+      @font-face {
+        font-family: "PyeongChangPeace";
+        src: url("assets/fonts/PyeongChangPeace-Bold.ttf") format("truetype");
+        font-weight: 700;
+      }
+      @font-face {
+        font-family: "Netmarble";
+        src: url("assets/fonts/netmarbleM.ttf") format("truetype");
+        font-weight: 400;
+      }
+      @font-face {
+        font-family: "Netmarble";
+        src: url("assets/fonts/netmarbleB.ttf") format("truetype");
+        font-weight: 700;
+      }
       :root {
         --beige: #f5ecd7;
         --cream: #fdf6ec;
@@ -822,13 +837,34 @@
       </div>
       <div class="font-showcase fade-up">
         <div class="font-item">
-          <div class="font-label">Main Typeface — Pretendard Bold</div>
-          <div class="font-sample-main">햄니버스에서<br />햄스터 키우자</div>
+          <div class="font-label">Main Typeface — 평창평화체 Bold</div>
+          <div
+            class="font-sample-main"
+            style="font-family: &quot;PyeongChangPeace&quot;, sans-serif"
+          >
+            한손의 작은 세상<br />Hamniverse
+          </div>
         </div>
         <div class="font-item">
-          <div class="font-label">Sub Typeface — Pretendard Light</div>
-          <div class="font-sample-sub">
-            한 손의 작은 세상<br />반려 햄스터와 함께
+          <div class="font-label">Sub Typeface — 넷마블체 Medium · Bold</div>
+          <div
+            class="font-sample-sub"
+            style="
+              font-family: &quot;Netmarble&quot;, sans-serif;
+              font-weight: 400;
+              margin-bottom: 12px;
+            "
+          >
+            햄니버스에서 햄스터 키우자
+          </div>
+          <div
+            class="font-sample-sub"
+            style="
+              font-family: &quot;Netmarble&quot;, sans-serif;
+              font-weight: 700;
+            "
+          >
+            햄니버스에서 햄스터 키우자
           </div>
         </div>
       </div>

@@ -274,10 +274,121 @@ if (shortsList && originalShorts.length) {
         updateShorts(false);
       }
       shortsTransitioning = false;
+
+      // 패널이 열려있으면 현재 active 카드 내용으로 자동 업데이트
+      const panel = document.getElementById("shorts-panel");
+      if (panel && !panel.classList.contains("hidden")) {
+        const activeCard = allShorts[shortsIndex];
+        if (activeCard) updatePanel(activeCard);
+      }
     }, 520);
   }
 
-  // 클릭 — 패널에 데이터 채우기
+  // ── 패널 내용 채우기 함수 ──
+  function updatePanel(card) {
+    const title = card.dataset.title || "—";
+    const period = card.dataset.period || "—";
+    const tools = card.dataset.tools || "—";
+    const desc = card.dataset.desc || "—";
+    const link = card.dataset.link || "#";
+    const colors = card.dataset.colors || "";
+    const fonts = card.dataset.fonts || "";
+    const goal = card.dataset.goal || "";
+    const problem = card.dataset.problem || "";
+    const solve = card.dataset.solve || "";
+    const retro = card.dataset.retro || "";
+
+    const toolIconMap = {
+      Photoshop:
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg",
+      Illustrator:
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-original.svg",
+      Figma:
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+      HTML: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+      CSS: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+      JavaScript:
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    };
+
+    const panelProject = document.getElementById("panel-project");
+    const panelPeriod = document.getElementById("panel-period-val");
+    const panelToolsBox = document.getElementById("panel-tools-icons");
+    const panelDesc = document.getElementById("panel-desc");
+    const panelLink = document.getElementById("panel-link");
+    const panelGoal = document.getElementById("panel-goal");
+    const panelGoalWrap = document.getElementById("panel-goal-wrap");
+    const panelProblem = document.getElementById("panel-problem");
+    const panelProblemWrap = document.getElementById("panel-problem-wrap");
+    const panelSolve = document.getElementById("panel-solve");
+    const panelSolveWrap = document.getElementById("panel-solve-wrap");
+    const panelRetro = document.getElementById("panel-retro");
+    const panelRetroWrap = document.getElementById("panel-retro-wrap");
+    const panelColors = document.getElementById("panel-colors");
+    const panelFonts = document.getElementById("panel-fonts");
+    const panelDesignWrap = document.getElementById("panel-design-wrap");
+
+    if (panelProject) panelProject.textContent = title;
+    if (panelPeriod) panelPeriod.textContent = period;
+    if (panelDesc) panelDesc.textContent = desc;
+    if (panelLink) panelLink.href = link;
+
+    if (panelGoal) panelGoal.textContent = goal;
+    if (panelGoalWrap) panelGoalWrap.style.display = goal ? "block" : "none";
+    if (panelProblem) panelProblem.textContent = problem;
+    if (panelProblemWrap)
+      panelProblemWrap.style.display = problem ? "block" : "none";
+    if (panelSolve) panelSolve.textContent = solve;
+    if (panelSolveWrap) panelSolveWrap.style.display = solve ? "block" : "none";
+    if (panelRetro) panelRetro.textContent = retro;
+    if (panelRetroWrap) panelRetroWrap.style.display = retro ? "block" : "none";
+
+    // 컬러 칩
+    if (panelColors) {
+      panelColors.innerHTML = "";
+      if (colors) {
+        colors.split(",").forEach((hex) => {
+          const wrap = document.createElement("div");
+          wrap.style.cssText =
+            "display:flex;flex-direction:column;align-items:center;gap:5px;";
+          const chip = document.createElement("div");
+          chip.style.cssText = `width:52px;height:32px;border-radius:6px;background:${hex.trim()};border:1px solid rgba(255,255,255,0.15);box-shadow:0 2px 6px rgba(0,0,0,0.3);`;
+          const label = document.createElement("span");
+          label.style.cssText =
+            "font-size:9px;color:#888;font-family:monospace;letter-spacing:0.02em;";
+          label.textContent = hex.trim();
+          wrap.appendChild(chip);
+          wrap.appendChild(label);
+          panelColors.appendChild(wrap);
+        });
+      }
+    }
+    if (panelFonts) panelFonts.textContent = fonts ? `폰트: ${fonts}` : "";
+    if (panelDesignWrap)
+      panelDesignWrap.style.display = colors || fonts ? "block" : "none";
+
+    // 툴 아이콘
+    if (panelToolsBox) {
+      panelToolsBox.innerHTML = "";
+      tools
+        .split("·")
+        .map((t) => t.trim())
+        .forEach((tool) => {
+          const src = toolIconMap[tool];
+          if (src) {
+            const img = document.createElement("img");
+            img.src = src;
+            img.alt = tool;
+            img.title = tool;
+            img.style.cssText =
+              "width:28px;height:28px;background:#fff;border-radius:6px;padding:2px;";
+            panelToolsBox.appendChild(img);
+          }
+        });
+    }
+  }
+
+  // ── 클릭 — 패널에 데이터 채우기 ──
   allShorts.forEach((card, i) => {
     card.addEventListener("click", (e) => {
       if (shortsIsDragging) return;
@@ -286,114 +397,7 @@ if (shortsList && originalShorts.length) {
         e.stopPropagation();
         moveShorts(i - shortsIndex);
       } else {
-        // 원본 카드의 data 가져오기 (clone도 동일 data 가짐)
-        const title = card.dataset.title || "—";
-        const period = card.dataset.period || "—";
-        const tools = card.dataset.tools || "—";
-        const desc = card.dataset.desc || "—";
-        const link = card.dataset.link || "#";
-
-        // 툴 아이콘 매핑
-        const toolIconMap = {
-          Photoshop:
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg",
-          Illustrator:
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-original.svg",
-          Figma:
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
-          HTML: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-          CSS: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-          JavaScript:
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-        };
-
-        const panelProject = document.getElementById("panel-project");
-        const panelPeriod = document.getElementById("panel-period-val");
-        const panelToolsBox = document.getElementById("panel-tools-icons");
-        const panelDesc = document.getElementById("panel-desc");
-        const panelLink = document.getElementById("panel-link");
-        const panelGoal = document.getElementById("panel-goal");
-        const panelGoalWrap = document.getElementById("panel-goal-wrap");
-        const panelProblem = document.getElementById("panel-problem");
-        const panelProblemWrap = document.getElementById("panel-problem-wrap");
-        const panelSolve = document.getElementById("panel-solve");
-        const panelSolveWrap = document.getElementById("panel-solve-wrap");
-        const panelRetro = document.getElementById("panel-retro");
-        const panelRetroWrap = document.getElementById("panel-retro-wrap");
-        const panelColors = document.getElementById("panel-colors");
-        const panelFonts = document.getElementById("panel-fonts");
-        const panelDesignWrap = document.getElementById("panel-design-wrap");
-
-        const colors = card.dataset.colors || "";
-        const colornames = card.dataset.colornames || "";
-        const fonts = card.dataset.fonts || "";
-        const goal = card.dataset.goal || "";
-        const problem = card.dataset.problem || "";
-        const solve = card.dataset.solve || "";
-        const retro = card.dataset.retro || "";
-
-        if (panelProject) panelProject.textContent = title;
-        if (panelPeriod) panelPeriod.textContent = period;
-        if (panelDesc) panelDesc.textContent = desc;
-        if (panelLink) panelLink.href = link;
-
-        if (panelGoal) panelGoal.textContent = goal;
-        if (panelGoalWrap)
-          panelGoalWrap.style.display = goal ? "block" : "none";
-        if (panelProblem) panelProblem.textContent = problem;
-        if (panelProblemWrap)
-          panelProblemWrap.style.display = problem ? "block" : "none";
-        if (panelSolve) panelSolve.textContent = solve;
-        if (panelSolveWrap)
-          panelSolveWrap.style.display = solve ? "block" : "none";
-        if (panelRetro) panelRetro.textContent = retro;
-        if (panelRetroWrap)
-          panelRetroWrap.style.display = retro ? "block" : "none";
-
-        // 컬러 칩 렌더링
-        if (panelColors) {
-          panelColors.innerHTML = "";
-          if (colors) {
-            colors.split(",").forEach((hex) => {
-              const wrap = document.createElement("div");
-              wrap.style.cssText =
-                "display:flex;flex-direction:column;align-items:center;gap:5px;";
-              const chip = document.createElement("div");
-              chip.style.cssText = `width:52px;height:32px;border-radius:6px;background:${hex.trim()};border:1px solid rgba(255,255,255,0.15);box-shadow:0 2px 6px rgba(0,0,0,0.3);`;
-              const label = document.createElement("span");
-              label.style.cssText =
-                "font-size:9px;color:#888;font-family:monospace;letter-spacing:0.02em;";
-              label.textContent = hex.trim();
-              wrap.appendChild(chip);
-              wrap.appendChild(label);
-              panelColors.appendChild(wrap);
-            });
-          }
-        }
-        if (panelFonts) panelFonts.textContent = fonts ? `폰트: ${fonts}` : "";
-        if (panelDesignWrap)
-          panelDesignWrap.style.display = colors || fonts ? "block" : "none";
-
-        // 툴 아이콘 렌더링
-        if (panelToolsBox) {
-          panelToolsBox.innerHTML = "";
-          tools
-            .split("·")
-            .map((t) => t.trim())
-            .forEach((tool) => {
-              const src = toolIconMap[tool];
-              if (src) {
-                const img = document.createElement("img");
-                img.src = src;
-                img.alt = tool;
-                img.title = tool;
-                img.style.cssText =
-                  "width:28px; height:28px; background:#fff; border-radius:6px; padding:2px;";
-                panelToolsBox.appendChild(img);
-              }
-            });
-        }
-
+        updatePanel(card);
         const panel = document.getElementById("shorts-panel");
         if (panel) panel.classList.remove("hidden");
       }
@@ -492,19 +496,43 @@ function updateActiveNav() {
 window.addEventListener("scroll", updateActiveNav, { passive: true });
 updateActiveNav();
 
-// ── SNS 카드 클릭 → 큰 커버로 전환 ──
+// ── SNS 카드 클릭 → 큰 커버로 전환 (부드럽게) ──
 function switchSnsCard(card, imgSrc, title, sub) {
   const coverImg = document.getElementById("player-cover-img");
-  if (coverImg) coverImg.src = imgSrc;
-
   const playerTitle = document.getElementById("player-title");
   const playerSub = document.getElementById("player-sub");
-  if (playerTitle) playerTitle.textContent = title;
-  if (playerSub) playerSub.textContent = sub;
 
-  const coverSub = document.getElementById("player-cover-sub");
-  if (coverSub) coverSub.textContent = title + " · " + sub;
+  // 페이드 아웃
+  if (coverImg) {
+    coverImg.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+    coverImg.style.opacity = "0";
+    coverImg.style.transform = "scale(0.97)";
+  }
+  if (playerTitle) {
+    playerTitle.style.transition = "opacity 0.2s ease";
+    playerTitle.style.opacity = "0";
+  }
+  if (playerSub) {
+    playerSub.style.transition = "opacity 0.2s ease";
+    playerSub.style.opacity = "0";
+  }
 
+  setTimeout(() => {
+    // 내용 교체
+    if (coverImg) coverImg.src = imgSrc;
+    if (playerTitle) playerTitle.textContent = title;
+    if (playerSub) playerSub.textContent = sub;
+
+    // 페이드 인
+    if (coverImg) {
+      coverImg.style.opacity = "1";
+      coverImg.style.transform = "scale(1)";
+    }
+    if (playerTitle) playerTitle.style.opacity = "1";
+    if (playerSub) playerSub.style.opacity = "1";
+  }, 300);
+
+  // 선택된 카드 표시
   document
     .querySelectorAll(".sns-small-card")
     .forEach((c) => c.classList.remove("selected"));
