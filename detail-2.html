@@ -500,6 +500,7 @@
 
       .screen-scroll-wrap {
         display: flex;
+        flex-wrap: nowrap;
         gap: 24px;
         overflow-x: auto;
         padding-bottom: 32px;
@@ -542,10 +543,14 @@
       }
 
       /* 실제 이미지가 있으면 */
-      .screen-phone img {
+      .screen-phone img.slide-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
       }
 
       /* 플레이스홀더 */
@@ -557,6 +562,9 @@
         gap: 12px;
         width: 100%;
         height: 100%;
+        padding-top: 40px;
+        padding-bottom: 36px;
+        z-index: 1;
       }
       .screen-placeholder-icon {
         font-size: 48px;
@@ -701,9 +709,10 @@
       <div class="hero-tag fade-up">App Design · 2026 · Personal Project</div>
       <h1 class="hero-title fade-up">Ham<br /><span>niverse</span></h1>
       <p class="hero-desc fade-up">
-        한 손의 작은 세상, 햄스터 관리 애플리케이션. 반복적인 반려동물 관리
-        행동을 귀엽고 감성적인 경험으로 바꿔 사용자가 매일 앱에 들어올 이유를
-        만듭니다.
+        "한 손안의 작은 세상, 햄스터와의 완벽한 공존."<br /><br />반려 햄스터의
+        건강 상태 기록, AI 챗봇 맞춤형 상담, 케이지 인테리어 가상 시뮬레이션 및
+        커스텀 용품 쇼핑까지 하나로 통합한 반려인 전용 올인원 모바일 웹/앱 UI
+        프로젝트입니다.
       </p>
       <div class="hero-meta fade-up">
         <div class="hero-meta-item">
@@ -767,34 +776,37 @@
           <strong>브라운·베이지 계열</strong>의 따뜻한 컬러와
           <strong>귀여운 캐릭터</strong>를 활용해 반려 햄스터를 돌보는
           아기자기한 세계관을 만들었습니다. 단순 관리 앱이 아닌
-          <strong>감성적인 일상 동반자</strong>를 목표로 설계했습니다.
+          <strong>반려인의 일상 속 올인원 동반자</strong>를 목표로 설계했습니다.
         </p>
       </div>
       <div class="feature-cards fade-up">
         <div class="feature-card">
           <div class="feature-icon">🌾</div>
           <div>
-            <div class="feature-title">Care</div>
+            <div class="feature-title">직관적 헬스 케어</div>
             <div class="feature-desc">
-              먹이, 물, 간식, 운동량 등 하루 건강 상태를 체크합니다.
+              사료, 물, 영양제 급여 및 산책 여부를 원터치 체크리스트 UI로
+              구현하여 일일 관리 편의성을 극대화했습니다.
             </div>
           </div>
         </div>
         <div class="feature-card">
           <div class="feature-icon">💬</div>
           <div>
-            <div class="feature-title">Emotion · 햄터뷰</div>
+            <div class="feature-title">지능형 소통 경험</div>
             <div class="feature-desc">
-              햄스터와 대화하는 듯한 AI 인터랙션으로 애착을 강화합니다.
+              딱딱한 백과사전식 정보 탐색을 탈피하여, 귀여운
+              마스코트(베이글)와의 메신저형 AI 상담 인터페이스를 구상했습니다.
             </div>
           </div>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🛒</div>
           <div>
-            <div class="feature-title">Commerce · 햄쇼핑</div>
+            <div class="feature-title">비주얼 가상 배치</div>
             <div class="feature-desc">
-              인테리어와 쇼핑을 연결하여 필요한 물품을 탐색합니다.
+              다양한 베딩, 은신처, 쳇바퀴 등의 가구를 햄스터 박스 레이아웃 위에
+              미리 배치해볼 수 있는 직관적인 가구 인테리어 UI를 제공합니다.
             </div>
           </div>
         </div>
@@ -872,36 +884,76 @@
 
     <!-- GOAL — 화이트 -->
     <section class="section bg-white" id="goal">
-      <div class="section-num fade-up">03 — Project Goal</div>
+      <div class="section-num fade-up">03 — Design Direction</div>
       <h2 class="section-title fade-up">Design<br />Direction</h2>
+      <p
+        class="fade-up"
+        style="
+          font-size: 18px;
+          color: var(--text-sub);
+          max-width: 800px;
+          line-height: 1.8;
+          margin-bottom: 60px;
+        "
+      >
+        반려동물이 주는 특유의 따뜻하고 포근한 정서적 교감을 시각화하기 위해
+        <strong style="color: var(--brown)"
+          >'내추럴 감성 브랜딩(Emotional Soft UX)'</strong
+        >을 전면에 내세웠습니다.
+      </p>
       <div class="goal-list">
         <div class="goal-item fade-up">
           <div class="goal-num">01</div>
           <div class="goal-content">
-            <h3>매일 들어올 이유를 만드는 감성 UX</h3>
+            <h3>자연 친화적 톤앤매너</h3>
             <p>
-              하루 체크 성취도에 따라 캐릭터 상태가 변화하도록 설계해 사용자와의
-              정서적 유대감을 형성했습니다.
+              인위적이고 차가운 원색을 배제하고, 자연물에서 영감을 얻은 부드러운
+              크림 베이지와 따뜻한 브라운 톤의 조합으로 안정감 있고 포근한
+              무드를 형성했습니다.
             </p>
           </div>
         </div>
         <div class="goal-item fade-up">
           <div class="goal-num">02</div>
           <div class="goal-content">
-            <h3>AI 햄터뷰로 정보 접근성 향상</h3>
+            <h3>눈이 편안한 배경 설계</h3>
             <p>
-              상담원 역할의 햄스터 AI를 만들어 사용자가 궁금하거나 모르는 햄스터
-              정보를 대화형으로 쉽게 얻을 수 있도록 했습니다.
+              장시간 케어 기록을 입력하는 사용자의 피로도를 대폭 낮추기 위해
+              부드러운 밀크 오프화이트 배경을 채택하여 편안한 시각 환경을
+              제공합니다.
             </p>
           </div>
         </div>
         <div class="goal-item fade-up">
           <div class="goal-num">03</div>
           <div class="goal-content">
-            <h3>케어·인테리어·쇼핑의 원스톱 연결</h3>
+            <h3>친근한 타이포그래피</h3>
             <p>
-              케이지 인테리어 가구 배치부터 용품 구매까지 하나의 앱 안에서
-              해결할 수 있도록 서비스 구조를 설계했습니다.
+              곡선미가 돋보이는 단정하고 친근한 분위기의 서체를 다채로운 굵기로
+              조합하여 컴팩트한 모바일 화면 속에서도 시인성과 가독성을 동시에
+              확보했습니다.
+            </p>
+          </div>
+        </div>
+        <div class="goal-item fade-up">
+          <div class="goal-num">04</div>
+          <div class="goal-content">
+            <h3>한 손 조작 지향 레이아웃</h3>
+            <p>
+              스마트폰을 한 손으로 쥔 상태에서도 화면 전체를 쉽게 통제할 수
+              있도록, 엄지손가락이 닿기 편한 하단 영역에 주요 기능 이동을 위한
+              네비게이션 바와 메인 플로팅 버튼을 효율적으로 배치했습니다.
+            </p>
+          </div>
+        </div>
+        <div class="goal-item fade-up">
+          <div class="goal-num">05</div>
+          <div class="goal-content">
+            <h3>모듈화된 카드 컴포넌트</h3>
+            <p>
+              사료, 영양제, 인테리어 가구 등 성격이 각기 다른 아이템 목록들을
+              일관성 있는 라운딩 그리드 카드로 레이아웃하여 화면의 복잡도를
+              줄이고 인지 부하를 최소화했습니다.
             </p>
           </div>
         </div>
@@ -914,39 +966,60 @@
       <h2 class="section-title fade-up">Target<br />User</h2>
       <div class="persona-grid fade-up">
         <div class="persona-card">
-          <div class="persona-age">30</div>
-          <div class="persona-name">이서연</div>
-          <div class="persona-role">바쁜 일상 속 햄스터를 키우는 직장인</div>
+          <div class="persona-age">21</div>
+          <div class="persona-name">한송이</div>
+          <div class="persona-role">
+            햄스터를 처음 키워봐서 모든 게 조심스러운 초보 집사 대학생
+          </div>
           <div class="persona-section">
             <div class="persona-label">목적</div>
             <div class="persona-text">
-              햄스터에게 밥·물·간식을 줬는지 모바일로 확인할 수 있는 앱이 필요.
-              대부분의 서비스가 강아지·고양이 위주라 햄스터만의 전용 서비스를
-              원함.
+              "우리 먼지가 이 음식을 먹어도 되는지, 케이지 환경은 어떻게 꾸며야
+              하는지 쉽고 빠르게 물어볼 곳이 필요해요."
             </div>
           </div>
           <div class="persona-section">
-            <div class="persona-label">니즈</div>
+            <div class="persona-label">Pain Point</div>
             <div class="persona-text">
-              한 곳에서 정보를 쉽게 확인, 직관적으로 케이지를 꾸밀 수 있는 기능
+              기존 커뮤니티나 인터넷 정보들은 글이 너무 길고 흩어져 있어,
+              일상적인 의문점이나 반려 식습관 가이드를 즉시 얻기 어렵습니다.
+            </div>
+          </div>
+          <div class="persona-section">
+            <div class="persona-label">Solution</div>
+            <div class="persona-text">
+              햄니버스의 대화형 AI 상담(베이글)을 통해 즉각적인 솔루션을 얻고,
+              매일 챙겨야 할 식사와 수분 급여 체크리스트를 놓치지 않고
+              관리합니다.
             </div>
           </div>
         </div>
         <div class="persona-card">
-          <div class="persona-age">🐹</div>
-          <div class="persona-name">핵심 UX 포인트</div>
-          <div class="persona-role">반복 관리 행동을 감성 경험으로</div>
+          <div class="persona-age">27</div>
+          <div class="persona-name">정태민</div>
+          <div class="persona-role">
+            내 손으로 완벽한 맞춤 홈을 꾸며주고 싶은 인테리어 중시형 직장인
+          </div>
           <div class="persona-section">
-            <div class="persona-label">메인 포인트</div>
+            <div class="persona-label">목적</div>
             <div class="persona-text">
-              관리(밥, 청소 등)를 자주 까먹음. 햄스터 정보가 여기저기 흩어져
-              있음. 케이지 인테리어를 어떻게 해야 할지 모르겠음.
+              "용품을 사기 전에 규격이 맞는지, 리빙박스 인테리어 테마에
+              어울리는지 미리 조합해보고 구매하고 싶어요."
             </div>
           </div>
           <div class="persona-section">
-            <div class="persona-label">행동 특성</div>
+            <div class="persona-label">Pain Point</div>
             <div class="persona-text">
-              SNS·유튜브로 정보 탐색. 복잡한 앱은 잘 사용하지 않음.
+              인터넷 쇼핑몰 사진만 보고 용품을 샀다가 케이지 크기에 맞지 않거나,
+              배치했을 때 전체적인 인테리어 톤앤매너를 해치는 경우가 많습니다.
+            </div>
+          </div>
+          <div class="persona-section">
+            <div class="persona-label">Solution</div>
+            <div class="persona-text">
+              앱 내 현재 인테리어 가상 배치 구역을 활용해 베딩 종류와 은신처
+              가구를 미리 매칭해보고, 원하는 규격의 '커스텀 박스 주문 제작'
+              탭으로 바로 이동해 실패 없는 쇼핑을 완성합니다.
             </div>
           </div>
         </div>
@@ -954,22 +1027,17 @@
     </section>
 
     <!-- SCREENS — 베이지, 가로 스크롤 -->
-    <section id="screens" class="bg-beige">
+    <section id="screens" class="bg-beige" style="padding: 120px 0 120px 80px">
       <div class="section-num fade-up">05 — Screens</div>
       <h2 class="section-title fade-up">UI<br />Preview</h2>
       <div class="screen-scroll-wrap fade-up" id="screenScroll">
-        <!-- 스크린 1: 스플래시 -->
         <div class="screen-card">
           <div class="screen-phone">
             <img
-              src="assets/image/slide2-1.png"
+              class="slide-img"
+              src="assets/image/start.png"
               alt="스플래시"
-              onerror="this.style.display = 'none'"
             />
-            <div class="screen-placeholder">
-              <div class="screen-placeholder-icon">🐹</div>
-              <div class="screen-placeholder-label">Start</div>
-            </div>
           </div>
           <div class="screen-label">스플래시</div>
           <div class="screen-desc">
@@ -977,52 +1045,133 @@
           </div>
         </div>
 
-        <!-- 스크린 2: 로그인 -->
         <div class="screen-card">
           <div class="screen-phone">
-            <img
-              src="assets/image/slide2-2.png"
-              alt="로그인"
-              onerror="this.style.display = 'none'"
-            />
-            <div class="screen-placeholder">
-              <div class="screen-placeholder-icon">🔐</div>
-              <div class="screen-placeholder-label">Login</div>
-            </div>
+            <img class="slide-img" src="assets/image/login.png" alt="로그인" />
           </div>
           <div class="screen-label">로그인</div>
           <div class="screen-desc">게스트·이메일·소셜 로그인 모두 지원</div>
         </div>
 
-        <!-- 스크린 3: 홈/메인 -->
         <div class="screen-card">
           <div class="screen-phone">
             <img
-              src="assets/image/slide2-3.png"
-              alt="홈화면"
-              onerror="this.style.display = 'none'"
+              src="assets/image/up-var.png"
+              alt="status bar"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                z-index: 10;
+              "
             />
-            <div class="screen-placeholder">
-              <div class="screen-placeholder-icon">🏠</div>
-              <div class="screen-placeholder-label">Home</div>
+            <div
+              style="
+                position: absolute;
+                top: 52px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+              "
+            >
+              <img
+                src="assets/image/main.png"
+                alt="홈화면"
+                style="width: 100%; display: block"
+              />
             </div>
+            <img
+              src="assets/image/down-bar.png"
+              alt="home bar"
+              style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                z-index: 10;
+              "
+            />
           </div>
           <div class="screen-label">홈 화면</div>
           <div class="screen-desc">하루 체크·영양·수분 게이지·오늘의 영상</div>
         </div>
 
-        <!-- 스크린 4: 햄터뷰 -->
         <div class="screen-card">
           <div class="screen-phone">
             <img
-              src="assets/image/slide2-4.png"
-              alt="햄터뷰"
-              onerror="this.style.display = 'none'"
+              src="assets/image/up-var.png"
+              alt="status bar"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                z-index: 10;
+              "
             />
-            <div class="screen-placeholder">
-              <div class="screen-placeholder-icon">💬</div>
-              <div class="screen-placeholder-label">Hamview</div>
+            <!-- 배경 고정 -->
+            <div
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1;
+              "
+            >
+              <img
+                src="assets/image/bagkground.png"
+                alt="배경"
+                style="
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  display: block;
+                "
+              />
             </div>
+            <!-- 채팅 스크롤 영역 -->
+            <div
+              style="
+                position: absolute;
+                top: 52px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                z-index: 2;
+              "
+            >
+              <img
+                src="assets/image/tolk.png"
+                alt="채팅"
+                style="width: 100%; display: block"
+              />
+            </div>
+            <img
+              src="assets/image/down-bar.png"
+              alt="home bar"
+              style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                z-index: 10;
+              "
+            />
           </div>
           <div class="screen-label">햄터뷰</div>
           <div class="screen-desc">
@@ -1030,18 +1179,51 @@
           </div>
         </div>
 
-        <!-- 스크린 5: 인테리어 -->
         <div class="screen-card">
           <div class="screen-phone">
             <img
-              src="assets/image/slide2-5.png"
-              alt="인테리어"
-              onerror="this.style.display = 'none'"
+              src="assets/image/up-var.png"
+              alt="status bar"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                z-index: 10;
+              "
             />
-            <div class="screen-placeholder">
-              <div class="screen-placeholder-icon">🏡</div>
-              <div class="screen-placeholder-label">Interior</div>
+            <div
+              style="
+                position: absolute;
+                top: 52px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+              "
+            >
+              <img
+                src="assets/image/interior.png"
+                alt="인테리어"
+                style="width: 100%; display: block"
+              />
             </div>
+            <img
+              src="assets/image/down-bar.png"
+              alt="home bar"
+              style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                z-index: 10;
+              "
+            />
           </div>
           <div class="screen-label">인테리어</div>
           <div class="screen-desc">
@@ -1049,25 +1231,56 @@
           </div>
         </div>
 
-        <!-- 스크린 6: 햄쇼핑 -->
         <div class="screen-card">
           <div class="screen-phone">
             <img
-              src="assets/image/slide2-6.png"
-              alt="햄쇼핑"
-              onerror="this.style.display = 'none'"
+              src="assets/image/up-var.png"
+              alt="status bar"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                z-index: 10;
+              "
             />
-            <div class="screen-placeholder">
-              <div class="screen-placeholder-icon">🛒</div>
-              <div class="screen-placeholder-label">Shopping</div>
+            <div
+              style="
+                position: absolute;
+                top: 52px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+              "
+            >
+              <img
+                src="assets/image/shop.png"
+                alt="햄쇼핑"
+                style="width: 100%; display: block"
+              />
             </div>
+            <img
+              src="assets/image/down-bar.png"
+              alt="home bar"
+              style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                z-index: 10;
+              "
+            />
           </div>
           <div class="screen-label">햄쇼핑</div>
           <div class="screen-desc">구매 주기 분석 기반 맞춤 상품 추천</div>
         </div>
       </div>
-
-      <!-- 바로가기 버튼 -->
       <div
         class="fade-up"
         style="margin-top: 60px; padding-right: 80px; text-align: center"
