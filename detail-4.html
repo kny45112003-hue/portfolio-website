@@ -730,10 +730,10 @@
       }
       .d4-screen-phone .scroll-area {
         position: absolute;
-        top: 48px;
+        top: 100px;
         left: 4px;
         right: 4px;
-        bottom: 34px;
+        bottom: 80px;
         overflow-y: scroll;
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
@@ -2490,32 +2490,6 @@
             });
           });
       })();
-
-      // 바 이미지 높이에 따라 스크롤 영역 동적 조정
-      function adjustScrollAreas() {
-        document.querySelectorAll(".d4-screen-phone").forEach((phone) => {
-          const topImg = phone.querySelector('img[src*="dishly-top"]');
-          const bottomImg = phone.querySelector('img[src*="dishly-bottom"]');
-          const scrollArea = phone.querySelector(".scroll-area");
-          if (!scrollArea) return;
-          const update = () => {
-            const topH = topImg ? topImg.offsetHeight : 0;
-            const bottomH = bottomImg ? bottomImg.offsetHeight : 0;
-            scrollArea.style.top = 48 + topH + "px";
-            scrollArea.style.bottom = 34 + bottomH + "px";
-          };
-          if (topImg)
-            topImg.complete
-              ? update()
-              : topImg.addEventListener("load", update);
-          if (bottomImg)
-            bottomImg.complete
-              ? update()
-              : bottomImg.addEventListener("load", update);
-          update();
-        });
-      }
-      window.addEventListener("load", adjustScrollAreas);
 
       // TAB & SLIDER
       const tabCurs = {
